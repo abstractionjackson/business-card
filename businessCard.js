@@ -2,64 +2,73 @@ class BusinessCard extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
+    this.createCardContent()
   }
 
-  connectedCallback() {
-    const name = this.getAttribute('name')
-    const title = this.getAttribute('title')
-    const company = this.getAttribute('company')
-    const phone = this.getAttribute('phone')
+  applyStyles(element, styles) {
+    for (const property in styles) {
+      element.style[property] = styles[property]
+    }
+  }
 
-    this.shadowRoot.innerHTML = `
-            <style>
-                .card {
-                    font-family: 'Helvetica', sans-serif;
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    grid-template-rows: 1fr 2fr 1fr;
-                    justify-items: center;
-                    align-items: center;
-                    max-width: 350px;
-                    margin: 20px auto;
-                    padding: 20px;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                    border-radius: 8px;
-                    background-color: #fff;
-                    position: relative;
-                    height: 200px;
-                }
+  createCardContent() {
+    const cardStyles = {
+      fontFamily: 'Helvetica, sans-serif',
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gridTemplateRows: '1fr 2fr 1fr',
+      justifyItems: 'center',
+      alignItems: 'center',
+      maxWidth: '350px',
+      margin: '20px auto',
+      padding: '20px',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+      borderRadius: '8px',
+      backgroundColor: '#fff',
+      position: 'relative',
+      height: '200px',
+    }
 
-                .phone {
-                    grid-column: 1;
-                    grid-row: 1;
-                    justify-self: start;
-                }
+    const card = document.createElement('div')
+    this.applyStyles(card, cardStyles)
 
-                .company {
-                    grid-column: 2;
-                    grid-row: 1;
-                    justify-self: end;
-                }
+    const phone = this.createTextElement('p', this.getAttribute('phone'), {
+      gridColumn: '1',
+      gridRow: '1',
+      justifySelf: 'start',
+    })
 
-                .name {
-                    grid-column: 1 / -1;
-                    font-size: 24px;
-                    color: black;
-                }
+    const company = this.createTextElement('p', this.getAttribute('company'), {
+      gridColumn: '2',
+      gridRow: '1',
+      justifySelf: 'end',
+    })
 
-                .title {
-                    grid-column: 1 / -1;
-                    font-size: 18px;
-                    color: #444;
-                }
-            </style>
-            <div class="card">
-                <p class="phone">${phone}</p>
-                <p class="company">${company}</p>
-                <h1 class="name">${name}</h1>
-                <p class="title">${title}</p>
-            </div>
-        `
+    const name = this.createTextElement('h1', this.getAttribute('name'), {
+      gridColumn: '1 / -1',
+      fontSize: '24px',
+      color: 'black',
+    })
+
+    const title = this.createTextElement('p', this.getAttribute('title'), {
+      gridColumn: '1 / -1',
+      fontSize: '18px',
+      color: '#444',
+    })
+
+    card.appendChild(phone)
+    card.appendChild(company)
+    card.appendChild(name)
+    card.appendChild(title)
+
+    this.shadowRoot.appendChild(card)
+  }
+
+  createTextElement(tag, text, styles) {
+    const element = document.createElement(tag)
+    element.textContent = text
+    this.applyStyles(element, styles)
+    return element
   }
 }
 
