@@ -28,15 +28,25 @@ const textStyles = {
     justifySelf: 'end',
   },
   name: {
-    gridColumn: '1 / -1',
+    margin: 0,
     fontSize: '24px',
     color: 'black',
   },
   title: {
-    gridColumn: '1 / -1',
+    margin: '0',
     fontSize: '18px',
     color: '#444',
   },
 }
 
-export { cardStyles, textStyles }
+const containerStyles = {
+  nameAndTitle: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: 'auto',
+    textAlign: 'center',
+    gridColumn: '1 / 3',
+  },
+}
+
+export { cardStyles, textStyles, containerStyles }

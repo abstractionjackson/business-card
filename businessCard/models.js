@@ -1,5 +1,5 @@
 // businessCard.js
-import { cardStyles, textStyles } from './styles.js'
+import { cardStyles, textStyles, containerStyles } from './styles.js'
 
 export class BusinessCard extends HTMLElement {
   constructor() {
@@ -28,6 +28,9 @@ export class BusinessCard extends HTMLElement {
       this.getAttribute('company'),
       textStyles.company,
     )
+    const nameAndTitleContainer = document.createElement('div')
+    this.applyStyles(nameAndTitleContainer, containerStyles.nameAndTitle)
+
     const name = this.createTextElement(
       'h1',
       this.getAttribute('name'),
@@ -39,10 +42,11 @@ export class BusinessCard extends HTMLElement {
       textStyles.title,
     )
 
+    nameAndTitleContainer.appendChild(name)
+    nameAndTitleContainer.appendChild(title)
     card.appendChild(phone)
     card.appendChild(company)
-    card.appendChild(name)
-    card.appendChild(title)
+    card.appendChild(nameAndTitleContainer)
 
     this.shadowRoot.appendChild(card)
   }
