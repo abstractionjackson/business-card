@@ -1,6 +1,6 @@
-# Business Card
+# Pale Nimbus (working title)
 
-A Web Component for American Pyschos.
+A Business Card Web Component for American Pyschos.
 
 ## Features
 
@@ -16,3 +16,7 @@ A Web Component for American Pyschos.
 
 - web-first
 - mobile, too
+
+## Dev Notes
+
+- NFT generator?

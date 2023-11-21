@@ -21,6 +21,7 @@ const textStyles = {
     gridColumn: '1',
     gridRow: '1',
     justifySelf: 'start',
+    textDecoration: 'none',
   },
   company: {
     gridColumn: '2',
@@ -28,9 +29,15 @@ const textStyles = {
     justifySelf: 'end',
   },
   name: {
-    margin: 0,
-    fontSize: '24px',
-    color: 'black',
+    heading: {
+      fontSize: '24px',
+      margin: 0,
+      color: 'black',
+    },
+    last: {
+      textTransform: 'uppercase',
+    },
+    ante: {},
   },
   title: {
     margin: '0',

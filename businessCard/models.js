@@ -1,5 +1,6 @@
 // businessCard.js
 import { cardStyles, textStyles, containerStyles } from './styles.js'
+import { formatPhoneNumber } from './utils.js'
 
 export class BusinessCard extends HTMLElement {
   constructor() {
@@ -18,11 +19,11 @@ export class BusinessCard extends HTMLElement {
     const card = document.createElement('div')
     this.applyStyles(card, cardStyles)
 
-    const phone = this.createTextElement(
-      'p',
-      this.getAttribute('phone'),
-      textStyles.phone,
-    )
+    const phoneNumber = this.getAttribute('phone')
+    const phoneNumberF = formatPhoneNumber(phoneNumber)
+    const phone = this.createTextElement('a', phoneNumberF, textStyles.phone)
+    phone.setAttribute('href', `tel:+1${phoneNumber}`) //USA
+
     const company = this.createTextElement(
       'p',
       this.getAttribute('company'),
@@ -31,18 +32,27 @@ export class BusinessCard extends HTMLElement {
     const nameAndTitleContainer = document.createElement('div')
     this.applyStyles(nameAndTitleContainer, containerStyles.nameAndTitle)
 
-    const name = this.createTextElement(
-      'h1',
-      this.getAttribute('name'),
-      textStyles.name,
+    const nameLast = this.createTextElement(
+      'span',
+      this.getAttribute('name').split(' ').pop(),
+      textStyles.name.last,
     )
+    const name = this.createTextElement(
+      'span',
+      this.getAttribute('name').split(' ').slice(0, -1).join(' '),
+      textStyles.name.ante,
+    )
+    const nameHeading = document.createElement('h1')
+    this.applyStyles(nameHeading, textStyles.name.heading)
     const title = this.createTextElement(
       'p',
       this.getAttribute('title'),
       textStyles.title,
     )
 
-    nameAndTitleContainer.appendChild(name)
+    nameHeading.appendChild(name)
+    nameHeading.appendChild(nameLast)
+    nameAndTitleContainer.appendChild(nameHeading)
     nameAndTitleContainer.appendChild(title)
     card.appendChild(phone)
     card.appendChild(company)
