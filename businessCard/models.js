@@ -1,5 +1,5 @@
 // businessCard.js
-import { cardStyles, textStyles, containerStyles } from './styles.js'
+import { avatarStyles, contentContainerStyles } from './styles.js'
 import {
   formatPhoneNumber,
   getStaticProperties,
@@ -14,6 +14,7 @@ export class BusinessCard extends HTMLElement {
   static job_title
   static email
   // static linkedin
+  static avatar
 
   constructor() {
     super()
@@ -48,6 +49,7 @@ export class BusinessCard extends HTMLElement {
   getContentContainer() {
     const el = document.createElement('div')
     el.id = `${uuid()}`
+    this.applyStyles(el, contentContainerStyles)
     return el
   }
   get phone() {
@@ -100,6 +102,15 @@ export class BusinessCard extends HTMLElement {
   }
   set company_name(value) {
     this._company_name = value
+  }
+  get avatar() {
+    const img = document.createElement('img')
+    img.src = this._avatar
+    this.applyStyles(img, avatarStyles)
+    return img
+  }
+  set avatar(value) {
+    this._avatar = value
   }
   applyStyles(element, styles) {
     for (const property in styles) {
