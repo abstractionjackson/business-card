@@ -7,8 +7,7 @@ import {
 } from './utils.js'
 
 export class BusinessCard extends HTMLElement {
-  static name_first
-  static name_last
+  static full_name
   static phone
   static company_name
   static job_title
@@ -71,21 +70,13 @@ export class BusinessCard extends HTMLElement {
   set email(value) {
     this._email = value
   }
-  get name_last() {
+  get full_name() {
     const span = document.createElement('span')
-    span.innerText = this._name_last
+    span.innerText = this._full_name
     return span
   }
-  set name_last(value) {
-    this._name_last = value
-  }
-  get name_first() {
-    const span = document.createElement('span')
-    span.innerText = this._name_first
-    return span
-  }
-  set name_first(value) {
-    this._name_first = value
+  set full_name(value) {
+    this._full_name = value
   }
   get job_title() {
     const span = document.createElement('span')
