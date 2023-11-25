@@ -1,59 +1,9 @@
-// cardStyles.js
-const cardStyles = {
-  fontFamily: 'Helvetica, sans-serif',
+export const contentContainerStyles = {
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  gridTemplateRows: '1fr 2fr 1fr',
-  justifyItems: 'center',
-  alignItems: 'center',
-  maxWidth: '350px',
-  margin: '20px auto',
-  padding: '20px',
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-  borderRadius: '8px',
-  backgroundColor: '#fff',
-  position: 'relative',
-  height: '200px',
+  backgroundColor: 'paleviolet',
 }
-
-const textStyles = {
-  phone: {
-    gridColumn: '1',
-    gridRow: '1',
-    justifySelf: 'start',
-    textDecoration: 'none',
-  },
-  company: {
-    gridColumn: '2',
-    gridRow: '1',
-    justifySelf: 'end',
-  },
-  name: {
-    heading: {
-      fontSize: '24px',
-      margin: 0,
-      color: 'black',
-    },
-    last: {
-      textTransform: 'uppercase',
-    },
-    ante: {},
-  },
-  title: {
-    margin: '0',
-    fontSize: '18px',
-    color: '#444',
-  },
+export const avatarStyles = {
+  width: '100%',
+  gridRow: '1',
+  margin: 'auto',
 }
-
-const containerStyles = {
-  nameAndTitle: {
-    display: 'flex',
-    flexDirection: 'column',
-    margin: 'auto',
-    textAlign: 'center',
-    gridColumn: '1 / 3',
-  },
-}
-
-export { cardStyles, textStyles, containerStyles }
