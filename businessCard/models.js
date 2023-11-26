@@ -53,6 +53,10 @@ export class BusinessCard extends HTMLElement {
   }
   get phone() {
     const link = document.createElement('a')
+    if (!this._phone) {
+      link.hidden = true
+      return link
+    }
     link.href = `tel:1${this._phone}` // USA
     link.innerText = formatPhoneNumber(this._phone)
     return link
