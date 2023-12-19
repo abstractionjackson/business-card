@@ -1,10 +1,7 @@
 // businessCard.js
-import { avatarStyles, contentContainerStyles } from './styles.js'
-import {
-  formatPhoneNumber,
-  getStaticProperties,
-  uuid4 as uuid,
-} from './utils.js'
+import { avatarStyles, templateStyles } from './styles.js'
+import { getTemplate } from './templates.js'
+import { formatPhoneNumber, getStaticProperties } from './utils.js'
 
 export class BusinessCard extends HTMLElement {
   static full_name
@@ -30,26 +27,12 @@ export class BusinessCard extends HTMLElement {
   }
 
   init() {
-    // Get all HTML Nodes
+    this.template = getTemplate()
+    this.applyStyles(this.template, templateStyles)
 
-    // The Content Container
-    const contentContainer = this.getContentContainer()
-
-    // Order (?)
     for (const prop of getStaticProperties(BusinessCard)) {
-      contentContainer.appendChild(this[prop])
+      this.template.appendChild(this[prop])
     }
-
-    this.content = contentContainer // assign new static prop (?)
-
-    return contentContainer
-  }
-
-  getContentContainer() {
-    const el = document.createElement('div')
-    el.id = `${uuid()}`
-    this.applyStyles(el, contentContainerStyles)
-    return el
   }
   get phone() {
     const link = document.createElement('a')

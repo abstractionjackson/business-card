@@ -11,33 +11,18 @@
       href="reset.css"
     />
     <title>Web Component Example: Business Card</title>
+    {% include "../businessCard/template.html" %}
     <script
-      src="/businessCard/index.js"
+      src="/businessCard/script.js"
       defer
       type="module"
     ></script>
   </head>
   <body>
-    <style>
-      body {
-        background-color: #fff;
-      }
-      article.container {
-        margin: 1rem;
-        box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
-        border-radius: 3px;
-        max-width: 300px;
-      }
-    </style>
     <article class="container">
-      <business-card
-        full_name="Jack Galan"
-        job_title="Software Developer"
-        company_name="Freelance"
-        phone="2125556342"
-        email="jacksongalan@gmail.com"
-        avatar="avatar.png"
-      ></business-card>
+      <business-card>
+        <h1 slot="full_name">John Doe</h1>
+      </business-card>
     </article>
   </body>
 </html>

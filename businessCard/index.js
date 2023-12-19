@@ -1,3 +1,3 @@
-import { BusinessCard } from './models.js'
+import { BusinessCard } from './conponents.js'
 
 customElements.define('business-card', BusinessCard)

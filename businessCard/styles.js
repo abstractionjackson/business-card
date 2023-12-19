@@ -1,4 +1,4 @@
-export const contentContainerStyles = {
+export const templateStyles = {
   display: 'grid',
   backgroundColor: 'paleviolet',
 }
