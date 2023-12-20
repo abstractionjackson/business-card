@@ -1,6 +1,8 @@
-# Pale Nimbus (working title)
+# Pale Nimbus
 
 A Business Card Web Component
+
+![wcbc-rwd](https://im3.ezgif.com/tmp/ezgif-3-d78a74be96.gif)
 
 ## Features
 
