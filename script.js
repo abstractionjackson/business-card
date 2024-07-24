@@ -36,4 +36,28 @@ function addFocusBehavior(element) {
         sel.removeAllRanges(); // Remove any current selections
         sel.addRange(range); // Add the new range
     });
+    element.addEventListener('DOMContentLoaded', function() {
+        var contentEditableElement = element.querySelector('span[name="phone"]');
+        console.log(contentEditableElement);
+        // Prevent non-numeric characters
+        contentEditableElement.addEventListener('keypress', function(e) {
+            if (!e.key.match(/[0-9]/) && e.key !== 'Backspace') {
+                e.preventDefault();
+            }
+        });
+    
+        // Prevent pasting non-numeric content
+        contentEditableElement.addEventListener('paste', function(e) {
+            e.preventDefault();
+            var text = (e.originalEvent || e).clipboardData.getData('text/plain');
+            element.execCommand("insertHTML", false, text.replace(/\D/g, ''));
+        });
+    
+        // Prevent multi-line
+        contentEditableElement.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+            }
+        });
+    });
 };

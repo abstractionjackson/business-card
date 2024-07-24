@@ -14,6 +14,7 @@
                 width: 400px;
                 height: 200px;
                 border: 1px solid #000;
+                color: #000;
                 padding: 1rem;
                 display: grid;
                 grid-template-rows: 1fr auto 1fr;
@@ -115,18 +116,21 @@
         </main>
     </template>
     <header>
-        <hgroup class="hero">
+        <hgroup>
             <h1>Pale Nimbus</h1>
-            <p>A business card <strong>Web Component</strong> 🔧 inspired 📼 by <i>American Psycho</i></p>
+            <img src="clouds.png" alt="clouds" width="70" height="70">
         </hgroup>
     </header>
-    <main class="landing">
-        <article>
+    <main>
+        <section id="howto">
+            <article>How to use the business card...</article>
+        </section>
+        <section id="control">
             <business-card>
                 <span slot="first">Patrick</span>
                 <span slot="last">Bateman</span>
             </business-card>
-        </article>
+        </section>
     </main>
     <script src="script.js"></script>
 </body>

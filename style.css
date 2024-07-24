@@ -2,32 +2,42 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
-  padding: 0 1rem;
   /* dark, neutral bg */
   background-color: #1a1a1a;
-}
-
-body > header {
-  margin: 12rem 0 3rem 0;
-}
-hgroup.hero {
-  text-align: center;
+  /* text is neutral light */
   color: #f2f2f2;
 }
 
-hgroup.hero h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+body > header {
+  margin: none;
+  text-align: center;
+  color: #f2f2f2;
+  padding: 1rem;
 }
 
-hgroup.hero p {
-  font-size: 1.4rem;
-  text-transform: capitalize;
+body > header > hgroup {
+  display: flex;
+  align-items: center;
 }
 
-.landing article {
-  box-shadow: 10px 10px 3px #3b3f42;
+body > header h1 {
+  font-size: 1.75em;
+  margin-right: 1rem;
+}
+
+body > main {
+  width: 100%;
+  padding: 1rem;
+}
+
+body main section#howto {
+  margin: 1rem 0 3rem;
+}
+body main section#control {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
